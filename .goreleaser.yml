@@ -1,10 +1,10 @@
-project_name: {{ .PluginName }}
+project_name: test_plugin
 release:
   github:
-    owner: {{ .Owner }}
-    name: {{ .Repo }}
+    owner: murbans1
+    name: test_kubectl_plugin
 builds:
-  - id: {{ .PluginName }}
+  - id: test_plugin
     goos:
     - linux
     - windows
@@ -17,12 +17,12 @@ builds:
       - GO111MODULE=on
     main: cmd/plugin/main.go
     ldflags: -s -w
-      -X github.com/{{ .Owner }}/{{ .Repo }}/pkg/version.version=
+      -X github.com/murbans1/test_kubectl_plugin/pkg/version.version=
 archives:
-  - id: {{ .PluginName }}
+  - id: test_plugin
     builds:
-    - {{ .PluginName }}
-    name_template: {{ `"{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"` }}
+    - test_plugin
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
     format_overrides:
     - goos: windows
       format: zip
