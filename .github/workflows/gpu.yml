@@ -1,0 +1,13 @@
+name: gpu-selfhosted
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  gpu:
+    runs-on: [self-hosted, nova, kai, gpu]   # must match ALL these labels
+    steps:
+      - run: nvidia-smi
+      - run: |
+          echo "runner: $RUNNER_NAME"
+          echo "node:   $(hostname)"
